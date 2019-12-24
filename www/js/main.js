@@ -8,6 +8,12 @@
 
 'use strict';
 
+$(document).ready(function(){
+	/* Added document read on top of existing code, console output verifies user login and stores userId for later use*/ 
+	console.log(window.localStorage.getItem("user_id"));
+});
+	/* Make a check to see if userId is stored succesfully in local storage and if it is undefined send user back to login screen*/ 
+
 
 $(window).on('load', function() {
 	/*------------------
