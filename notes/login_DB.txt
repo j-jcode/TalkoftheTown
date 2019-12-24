@@ -1,0 +1,146 @@
+https://www.w3schools.com/php/php_oop_classes_abstract.asp
+
+Use this script to create a SQL table in the database
+
+CREATE TABLE dados (
+id INT AUTO_INCREMENT PRIMARY KEY, 
+firstname VARCHAR(30) NOT NULL,
+lastname VARCHAR(30) NOT NULL,
+email VARCHAR(50),
+reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)
+
+
+CREATE TABLE dados (
+id INT AUTO_INCREMENT PRIMARY KEY, //PRIMARY KEY needed
+firstname VARCHAR(30) NOT NULL,
+lastname VARCHAR(30) NOT NULL,
+email VARCHAR(50),
+reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)
+
+INSERT INTO table_name (column1, column2, column3,...)
+VALUES (value1, value2, value3,...)
+
+
+INSERT INTO dados (firstname , lastname, email)
+VALUES (jay, admin, jayad@mail.com)
+
+
+mysql> INSERT INTO dados (firstname , lastname, email) VALUES ('jay','admin','jayad@mail.com');
+Query OK, 1 row affected (0.02 sec)
+
+
+mysql> select * from dados;                                                     +----+-----------+----------+----------------+---------------------+
+| id | firstname | lastname | email          | reg_date            |
++----+-----------+----------+----------------+---------------------+
+|  1 | jay       | admin    | jayad@mail.com | 2019-12-22 19:08:48 |
++----+-----------+----------+----------------+---------------------+
+1 row in set (0.00 sec)
+
+ALTER TABLE table_name
+  ADD column_name column_definition;
+
+ALTER TABLE dados
+  ADD username VARCHAR(30) NOT NULL;
+
+mysql> ALTER TABLE dados
+    ->   ADD username VARCHAR(30) NOT NULL;
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
+
+UPDATE dados
+SET username = "j"
+WHERE id= 1;
+
+
+mysql> select * from dados;
++----+-----------+----------+----------------+---------------------+----------+
+| id | firstname | lastname | email          | reg_date            | username |
++----+-----------+----------+----------------+---------------------+----------+
+|  1 | jay       | admin    | jayad@mail.com | 2019-12-22 19:08:48 |          |
++----+-----------+----------+----------------+---------------------+----------+
+1 row in set (0.00 sec)
+
+mysql> UPDATE dados
+    -> SET username = "j"
+    -> WHERE id= 1;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from dados;
++----+-----------+----------+----------------+---------------------+----------+
+| id | firstname | lastname | email          | reg_date            | username |
++----+-----------+----------+----------------+---------------------+----------+
+|  1 | jay       | admin    | jayad@mail.com | 2019-12-22 19:13:57 | j        |
++----+-----------+----------+----------------+---------------------+----------+
+1 row in set (0.00 sec)
+
+For the Login process 
+
+
+mysql> use talk;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> SELECT * FROM dados WHERE userename="j";
+ERROR 1054 (42S22): Unknown column 'userename' in 'where clause'
+mysql> SELECT * FROM dados WHERE username="j";
++----+-----------+----------+----------------+---------------------+----------+
+| id | firstname | lastname | email          | reg_date            | username |
++----+-----------+----------+----------------+---------------------+----------+
+|  1 | jay       | admin    | jayad@mail.com | 2019-12-22 19:13:57 | j        |
++----+-----------+----------+----------------+---------------------+----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM dados WHERE username="jo";
+Empty set (0.00 sec)
+
+Add password!!!!
+
+
+ALTER TABLE dados
+  ADD password VARCHAR(30) NOT NULL;
+
+
+mysql> use talk;
+Database changed
+mysql>
+mysql> ALTER TABLE dados
+    ->   ADD password VARCHAR(30) NOT NULL;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+
+
+UPDATE dados
+SET password = "word"
+WHERE id= 1;
+
+
+mysql> mysql> select * from dados;
++----+-----------+----------+----------------+---------------------+----------+----------+
+| id | firstname | lastname | email          | reg_date            | username | password |
++----+-----------+----------+----------------+---------------------+----------+----------+
+|  1 | jay       | admin    | jayad@mail.com | 2019-12-22 19:31:19 | j        | word     |
++----+-----------+----------+----------------+---------------------+----------+----------+
+
+SELECT * FROM dados
+	WHERE username = "j" AND password = "word" ;
+
+
+mysql> SELECT * FROM dados
+    -> WHERE username = "j" AND password = "word" ;
++----+-----------+----------+----------------+---------------------+----------+----------+
+| id | firstname | lastname | email          | reg_date            | username | password |
++----+-----------+----------+----------------+---------------------+----------+----------+
+|  1 | jay       | admin    | jayad@mail.com | 2019-12-22 19:31:19 | j        | word     |
++----+-----------+----------+----------------+---------------------+----------+----------+
+1 row in set (0.00 sec)
+
+
